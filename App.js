@@ -7,23 +7,35 @@ import PlaceList from './src/components/PlaceList/PlaceList';
 export default class App extends React.Component {
 
   state = {
-    places:[],
+    places: [],
   }
 
   placeAddedHandler = placeName => {
     this.setState(prevState => {
       return {
-        places: prevState.places.concat(placeName )
+        places: prevState.places.concat(placeName)
       };
-    })
-  };
+    });
+  }
+
+  placeDeletedHandler = index => {
+    this.setState(prevState => {
+      return {
+        places: prevState.places.filter((place, i) => {
+          return i !== index;
+        })
+      };
+    });
+  }
 
   render() {
-    
+
     return (
       <View style={styles.container}>
-        <PlaceInput onPlaceAdded={this.placeAddedHandler}/>
-        <PlaceList places={this.state.places}/>
+        <PlaceInput onPlaceAdded={this.placeAddedHandler} />
+        <PlaceList
+          places={this.state.places}
+          onItemDeleted={this.placeDeletedHandler} />
       </View>
     );
   }
