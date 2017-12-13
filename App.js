@@ -3,7 +3,6 @@ import { StyleSheet, View } from 'react-native';
 
 import PlaceInput from './src/components/PlaceInput/PlaceInput';
 import PlaceList from './src/components/PlaceList/PlaceList';
-import placeImage from './src/assets/beatiful.jpg';
 
 export default class App extends React.Component {
 
@@ -17,7 +16,9 @@ export default class App extends React.Component {
         places: prevState.places.concat({
           key: Math.random(),
           name: placeName,
-          image: placeImage
+          image: {
+            uri: "http://www.ilhabela.com.br/wp-content/uploads/2012/11/praia-do-pereque-ilhabela-fernando-tomanik-portalilhabela.jpg"
+          }
         })
       };
     });
